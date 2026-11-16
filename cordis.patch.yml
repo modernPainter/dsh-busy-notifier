@@ -15,13 +15,22 @@
           - degraded
           - is_degraded
           - server_busy
-        # 公用模型 Provider 关键词（切换到匹配这些关键词的公用模型时，立即隐藏横幅并清除已关闭记录）
+        # 公用模型关键词（匹配 provider 或 model 名称中包含以下关键词时，立即隐藏横幅并清除已关闭记录）
         publicProviders:
           - deepseek
           - kimi
           - moonshot
           - openai
+          - claude
           - anthropic
           - qwen
+          - gemini
+          - gpt
+          - glm
+          - doubao
+          - ernie
+          - minimax
+          - grok
+          - mistral
         # 自建模型 Provider 关键词（留空则默认除 publicProviders 以外均视为自建模型；也可显式指定如 ["company", "internal", "self"]）
         selfHostedProviders: []
