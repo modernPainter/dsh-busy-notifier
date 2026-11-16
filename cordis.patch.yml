@@ -1,0 +1,27 @@
+# Browser-half + Host boot config injection for @huaqiu/dsh-busy-notifier.
+# Renders a non-modal warning banner in `conversation.input.dock` when the
+# backend marks a conversation response/event as busy/degraded.
+- insert:
+    - id: ui-busy-notifier
+      name: '@huaqiu/dsh-busy-notifier'
+      config:
+        # 冷却时间（分钟）：用户主动点击 × 关闭横幅后，在该时长内同一自建模型不再重复弹出。
+        cooldownMinutes: 30
+        # 后端传递的“繁忙/体验降级”参数字段名列表（预留可隨時调整，支持布尔值 true 或字符串 "busy"/"degraded"/"high"）
+        busyFields:
+          - is_busy
+          - isBusy
+          - busy
+          - degraded
+          - is_degraded
+          - server_busy
+        # 公用模型 Provider 关键词（切换到匹配这些关键词的公用模型时，立即隐藏横幅并清除已关闭记录）
+        publicProviders:
+          - deepseek
+          - kimi
+          - moonshot
+          - openai
+          - anthropic
+          - qwen
+        # 自建模型 Provider 关键词（留空则默认除 publicProviders 以外均视为自建模型；也可显式指定如 ["company", "internal", "self"]）
+        selfHostedProviders: []
